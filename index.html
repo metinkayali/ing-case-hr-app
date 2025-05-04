@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="view-port" content="width=device-width, initial-scale=1.0">
+    <title>ING Case HR App</title>
+    <script>
+      process = {
+        env: 'development'
+      }
+    </script>
+    <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="./node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <div class="main-content">
+      <ing-case-hr-app></ing-case-hr-app>
+    </div>
+  </body>
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Lucida Sans', sans-serif;
+      background-color: rgb(245, 245, 245);
+    }
+    .main-content {
+      position: absolute;
+    }
+    @media only screen and (max-width: 600px) {
+      .main-content {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+    @media only screen and (min-width: 600px) {
+      .main-content {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  </style>
+</html>
