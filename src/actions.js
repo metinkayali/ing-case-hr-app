@@ -40,10 +40,15 @@ export function requestEditEmployee({ employeeId }) {
       dispatch(setEditingEmployee({ employee, action: 'edit' }))
     } else {
       dispatch(setEditingEmployee({
-        employee: [undefined, null, null, new Date().getTime(), undefined, null, null, 'Tech'],
+        employee: newEmployeeTemplate(),
         action: 'add',
       }))
     }
+  }
+
+  function newEmployeeTemplate() {
+    const employmentDateAsNow = new Date().getTime()
+    return [undefined, null, null, employmentDateAsNow, undefined, null, null, 'Tech']
   }
 }
 
