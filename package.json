@@ -22,7 +22,7 @@
     "analyze": "cem analyze --litelement --globs \"**/*.js\" --exclude docs",
     "analyze:watch": "cem analyze --litelement --globs \"**/*.js\" --exclude docs --watch",
     "serve": "wds --watch",
-    "serve:prod": "MODE=prod npm run serve",
+    "serve:prod": "npm run build && static-serve build",
     "test": "npm run test:dev && npm run test:prod",
     "test:dev": "wtr",
     "test:watch": "wtr --watch",
@@ -67,7 +67,8 @@
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "rollup": "^4.40.1",
-    "rollup-plugin-summary": "^3.0.1"
+    "rollup-plugin-summary": "^3.0.1",
+    "static-serve": "^0.0.1"
   },
   "customElements": "custom-elements.json"
 }

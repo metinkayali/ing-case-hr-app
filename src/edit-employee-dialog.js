@@ -77,10 +77,20 @@ export class EditEmployeeDialog extends ReduxStateElement {
         <option value="Analytics" ?selected=${this._formInput[7] === 'Analytics'}>Analytics</option>
         <option value="Tech" ?selected=${this._formInput[7] === 'Tech'}>Tech</option>
       </select><br>
-      <input class="full-btn" type="submit" value="Apply"
-        @click=${() => this.dispatch(submitForm(this._formInput))} /><br>
+      <input class="full-btn" type="button" value="Apply"
+        @click=${() => this._executeOnConfirmDialog((d) => d.showModal())} /><br>
       <input class="full-btn inverted-btn" type="button" value="Cancel"
         @click=${() => this._closeDialog()} />
+      <dialog id="edit-confirm-dialog">
+        <header><h4 class="title-text">Continue?</h4></header>
+        <main>
+          <p>Your changes will be applied.</p>
+          <input class="full-btn" type="submit" value="Proceed"
+            @click=${() => this._updateConfirmed(true)} />
+          <input class="full-btn inverted-btn" type="button" value="Cancel"
+            @click=${() => this._updateConfirmed(false)} />
+        </main>
+      </dialog>
     </form>
   </main>
 </dialog>
@@ -93,6 +103,12 @@ export class EditEmployeeDialog extends ReduxStateElement {
   _showDialog() {
     this._executeOnDialog((dialog) => dialog.showModal())
   }
+  _updateConfirmed(confirmed) {
+    this._executeOnConfirmDialog((dialog) => dialog.close())
+    if (confirmed) {
+      this.dispatch(submitForm(this._formInput))
+    }
+  }
 
   _registeredOnce = false
   _executeOnDialog(doFn) {
@@ -104,6 +120,12 @@ export class EditEmployeeDialog extends ReduxStateElement {
         })
         this._registeredOnce = true
       }
+      doFn(dialog)
+    }
+  }
+  _executeOnConfirmDialog(doFn) {
+    const dialog = this.renderRoot.querySelector('#edit-confirm-dialog')
+    if (dialog) {
       doFn(dialog)
     }
   }
