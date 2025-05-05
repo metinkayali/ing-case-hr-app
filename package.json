@@ -7,7 +7,8 @@
   "module": "my-element.js",
   "type": "module",
   "scripts": {
-    "build": "rollup -c",
+    "clean": "rimraf build",
+    "build": "npm run clean && rollup -c",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:eslint": "eslint '**/*.js'",
     "lint:lit-analyzer": "lit-analyzer my-element.js",
