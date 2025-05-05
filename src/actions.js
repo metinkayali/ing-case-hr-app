@@ -13,8 +13,14 @@ export function toggleLang() {
   return function(dispatch, getState) {
     const currentLang = getState().lang
     const nextLang = currentLang === 'en' ? 'tr' : 'en'
-    setLocale(nextLang)
-    dispatch(setLang(nextLang))
+    dispatch(loadLang(nextLang))
+  }
+}
+
+export function loadLang(lang) {
+  return function(dispatch) {
+    setLocale(lang) // side effect
+    dispatch(setLang(lang))
   }
 }
 

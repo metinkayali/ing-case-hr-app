@@ -1,7 +1,6 @@
 
-import { setLocale } from './localization'
-import { setLang, store} from './state'
+import { loadLang } from './actions'
+import { store} from './state'
 
-const locale = document.documentElement.lang || 'en'
-setLocale(locale)
-store.dispatch(setLang(locale))
+const lang = document.documentElement.lang || 'en'
+store.dispatch(loadLang(lang))
