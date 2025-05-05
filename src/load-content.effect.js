@@ -21,5 +21,7 @@ const generateEmployees = (count) => {
   return acc
 }
 
-const providerFn = async () => generateEmployees(9)
-store.dispatch(loadEmployees(providerFn))
+export default function() {
+  const providerFn = async () => generateEmployees(9)
+  store.dispatch(loadEmployees(providerFn))
+}
